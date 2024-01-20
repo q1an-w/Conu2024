@@ -7,17 +7,9 @@ import { useEffect, useState } from "react";
 const YourPage = () => {
   const [sortedData, setSortedData] = useState([]);
 
-  const csvFilePath = "../database/datafile.csv"; // Your CSV data goes here
-
-  const handleFileChange = async () => {
+  const getFileData = async () => {
     try {
-      const response = await fetch(csvFilePath);
-      const csvContent = await response.text();
-
-      const blob = new Blob([csvContent], { type: "text/csv" });
-      const fakeFile = new File([blob], "sample.csv", { type: "text/csv" });
-
-      const parsedData = await parseAndSortCsvFile(fakeFile);
+      const parsedData = await parseAndSortCsvFile(); //yumeng remmebr this is how to get the raw sorted data
 
       console.log(parsedData);
       setSortedData(parsedData);
@@ -34,7 +26,7 @@ const YourPage = () => {
   return (
     <div>
       <h1>Date-sorted CSV Data</h1>
-      <button onClick={handleFileChange}>Load CSV Data</button>
+      <button onClick={getFileData}>Load CSV Data</button>
 
       <ul>
         {sortedData.map((item, index) => (

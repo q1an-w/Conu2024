@@ -1,8 +1,12 @@
-// utility/parseCsv.js
-
 import Papa from "papaparse";
 
-export const parseAndSortCsvFile = async (file) => {
+export const parseAndSortCsvFile = async () => {
+  const csvFilePath = "../database/datafileshort.csv"; // Your CSV data goes here
+  const response = await fetch(csvFilePath);
+  const csvContent = await response.text();
+
+  const blob = new Blob([csvContent], { type: "text/csv" });
+  const file = new File([blob], "sample.csv", { type: "text/csv" });
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
