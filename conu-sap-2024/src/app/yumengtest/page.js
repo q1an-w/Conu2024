@@ -1,20 +1,25 @@
-// pages/index.js
 "use client";
-// pages/index.js
-import { parseAndSortCsvFile } from "../utility/parseCsv.js";
+import { truncateParsedData } from "../utility/truncateData.js";
 import { useEffect, useState } from "react";
+
+const startDate = new Date(
+  "Wed Oct 05 2022 14:22:00 GMT-0400 (Eastern Daylight Time)"
+);
+const endDate = new Date(
+  "Thu Oct 06 2022 09:30:00 GMT-0400 (Eastern Daylight Time)"
+);
 
 const YourPage = () => {
   const [sortedData, setSortedData] = useState([]);
 
   const getFileData = async () => {
     try {
-      const parsedData = await parseAndSortCsvFile(); //yumeng remmebr this is how to get the raw sorted data
+      const truncatedData = await truncateParsedData(startDate, endDate);
 
-      console.log(parsedData);
-      setSortedData(parsedData);
+      console.log(truncatedData);
+      setSortedData(truncatedData);
     } catch (error) {
-      console.error("Error fetching or parsing CSV file:", error);
+      console.error("Error truncating data:", error);
     }
   };
 
@@ -25,8 +30,8 @@ const YourPage = () => {
 
   return (
     <div>
-      <h1>Date-sorted CSV Data</h1>
-      <button onClick={getFileData}>Load CSV Data</button>
+      <h1>Date-truncated CSV Data</h1>
+      <button onClick={getFileData}>Load Truncated CSV Data</button>
 
       <ul>
         {sortedData.map((item, index) => (
