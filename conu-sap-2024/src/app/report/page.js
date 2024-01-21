@@ -112,7 +112,7 @@ function App() {
       datasets: [
         {
           data: [revenue, loss],
-          backgroundColor: ["green", "red"],
+          backgroundColor: ["#8A9A5B", "pink"],
         },
       ],
     };
@@ -120,8 +120,8 @@ function App() {
     const chartOptions = {
       responsive: true,
       maintainAspectRatio: false,
-      width: "20vw", // Set the width to 50vw
-      height: "20vh", // Set the height to 50vh
+      width: "50vw", // Set the width to 50vw
+      height: "50vh", // Set the height to 50vh
     };
 
     return { ...chartData, options: chartOptions };
@@ -153,7 +153,7 @@ function App() {
       </div>
       {totalTab ? (
         <div className="information">
-          <h2>Total Report</h2>
+          <h2 id="total-report-title">Total Report</h2>
           <div id="total-report">
             <div className="total-report-item">
               {Object.entries(genReport.TOTALREPORT).map(([key, value]) => {
@@ -183,10 +183,9 @@ function App() {
                 );
               })}
             </div>
-            <div id="graph">
-              <Doughnut data={getChartData(genReport.TOTALREPORT)} />
-            </div>
-            {/* ... other properties from TOTALREPORT */}
+          </div>
+          <div id="graph">
+            <Doughnut data={getChartData(genReport.TOTALREPORT)} />
           </div>
         </div>
       ) : (
@@ -207,7 +206,6 @@ function App() {
           ))}
         </div>
       )}
-      // ... (previous code)
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup">

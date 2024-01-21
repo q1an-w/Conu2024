@@ -82,9 +82,9 @@ button {
 
 .title1 {
   font-family: Helvetica;
-  font-weight: 700;
-  padding-left: 6rem;
+  font-weight: 800;
   font-size: 400%;
+  letter-spacing: 0.5vh;
 }
 
 .information {
@@ -99,7 +99,7 @@ button {
 
 #graph {
   overflow: hidden;
-}
+  margin: auto;
 
 #tr-table {
   border: 3px solid rgb(0, 0, 0);
@@ -210,3 +210,4 @@ button {
 }
 
 
+}
