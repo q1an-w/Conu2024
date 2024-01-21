@@ -1,0 +1,240 @@
+[debug] [2024-01-21T12:02:06.911Z] ----------------------------------------------------------------------
+[debug] [2024-01-21T12:02:06.913Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jjin0\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-01-21T12:02:06.913Z] CLI Version:   13.0.2
+[debug] [2024-01-21T12:02:06.913Z] Platform:      win32
+[debug] [2024-01-21T12:02:06.914Z] Node Version:  v18.17.1
+[debug] [2024-01-21T12:02:06.914Z] Time:          Sun Jan 21 2024 07:02:06 GMT-0500 (Eastern Standard Time)
+[debug] [2024-01-21T12:02:06.915Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-21T12:02:07.034Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-21T12:02:07.034Z] > authorizing via signed-in user (qianywang25@gmail.com)
+[debug] [2024-01-21T12:02:07.035Z] [iam] checking project myscheduler-b0fff for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-01-21T12:02:07.037Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions [none]
+[debug] [2024-01-21T12:02:07.037Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions x-goog-quota-user=projects/myscheduler-b0fff
+[debug] [2024-01-21T12:02:07.037Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:02:07.416Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions 200
+[debug] [2024-01-21T12:02:07.417Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:02:07.420Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:02:07.740Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff 200
+[debug] [2024-01-21T12:02:07.740Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff {"projectId":"myscheduler-b0fff","projectNumber":"195069311030","displayName":"MyScheduler","name":"projects/myscheduler-b0fff","resources":{"hostingSite":"myscheduler-b0fff","realtimeDatabaseInstance":"myscheduler-b0fff-default-rtdb"},"state":"ACTIVE","etag":"1_521acdd0-8aba-4067-9797-1aed1b2c5954"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-01-21T12:02:19.794Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:02:21.387Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff 200
+[debug] [2024-01-21T12:02:21.388Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff {"name":"projects/myscheduler-b0fff/sites/myscheduler-b0fff","defaultUrl":"https://myscheduler-b0fff.web.app","appId":"1:195069311030:web:207d60d1d76711c0764097","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.1.0
+
+[info] 
+
+[info]    Creating an optimized production build ...
+
+[info] uncaughtException [Error: EPERM: operation not permitted, open 'C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'C:\\Users\\jjin0\\Documents\\GIT FOLDER\\Conu2024\\Conu2024\\conu-sap-2024\\.next\\trace'
+}
+
+[debug] [2024-01-21T12:02:28.684Z] Error: ENOENT: no such file or directory, open 'C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\.next\server\middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-01-21T12:03:46.909Z] ----------------------------------------------------------------------
+[debug] [2024-01-21T12:03:46.911Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jjin0\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-01-21T12:03:46.911Z] CLI Version:   13.0.2
+[debug] [2024-01-21T12:03:46.912Z] Platform:      win32
+[debug] [2024-01-21T12:03:46.912Z] Node Version:  v18.17.1
+[debug] [2024-01-21T12:03:46.912Z] Time:          Sun Jan 21 2024 07:03:46 GMT-0500 (Eastern Standard Time)
+[debug] [2024-01-21T12:03:46.913Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-21T12:03:46.982Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-21T12:03:46.982Z] > authorizing via signed-in user (qianywang25@gmail.com)
+[debug] [2024-01-21T12:03:46.983Z] [iam] checking project myscheduler-b0fff for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-01-21T12:03:46.985Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions [none]
+[debug] [2024-01-21T12:03:46.985Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions x-goog-quota-user=projects/myscheduler-b0fff
+[debug] [2024-01-21T12:03:46.986Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:03:47.172Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions 200
+[debug] [2024-01-21T12:03:47.172Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:03:47.174Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:03:47.490Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff 200
+[debug] [2024-01-21T12:03:47.490Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff {"projectId":"myscheduler-b0fff","projectNumber":"195069311030","displayName":"MyScheduler","name":"projects/myscheduler-b0fff","resources":{"hostingSite":"myscheduler-b0fff","realtimeDatabaseInstance":"myscheduler-b0fff-default-rtdb"},"state":"ACTIVE","etag":"1_521acdd0-8aba-4067-9797-1aed1b2c5954"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-01-21T12:03:58.320Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:03:58.642Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff 200
+[debug] [2024-01-21T12:03:58.642Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff {"name":"projects/myscheduler-b0fff/sites/myscheduler-b0fff","defaultUrl":"https://myscheduler-b0fff.web.app","appId":"1:195069311030:web:207d60d1d76711c0764097","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.1.0
+
+[info] 
+
+[debug] [2024-01-21T12:09:58.657Z] ----------------------------------------------------------------------
+[debug] [2024-01-21T12:09:58.659Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jjin0\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-01-21T12:09:58.659Z] CLI Version:   13.0.2
+[debug] [2024-01-21T12:09:58.660Z] Platform:      win32
+[debug] [2024-01-21T12:09:58.660Z] Node Version:  v18.17.1
+[debug] [2024-01-21T12:09:58.660Z] Time:          Sun Jan 21 2024 07:09:58 GMT-0500 (Eastern Standard Time)
+[debug] [2024-01-21T12:09:58.661Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-21T12:09:58.735Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-21T12:09:58.736Z] > authorizing via signed-in user (qianywang25@gmail.com)
+[debug] [2024-01-21T12:09:58.736Z] [iam] checking project myscheduler-b0fff for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-01-21T12:09:58.738Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions [none]
+[debug] [2024-01-21T12:09:58.738Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions x-goog-quota-user=projects/myscheduler-b0fff
+[debug] [2024-01-21T12:09:58.738Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:09:59.061Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions 200
+[debug] [2024-01-21T12:09:59.062Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:09:59.063Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:09:59.427Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff 200
+[debug] [2024-01-21T12:09:59.427Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff {"projectId":"myscheduler-b0fff","projectNumber":"195069311030","displayName":"MyScheduler","name":"projects/myscheduler-b0fff","resources":{"hostingSite":"myscheduler-b0fff","realtimeDatabaseInstance":"myscheduler-b0fff-default-rtdb"},"state":"ACTIVE","etag":"1_521acdd0-8aba-4067-9797-1aed1b2c5954"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-01-21T12:10:10.618Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:10:11.206Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff 200
+[debug] [2024-01-21T12:10:11.207Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff {"name":"projects/myscheduler-b0fff/sites/myscheduler-b0fff","defaultUrl":"https://myscheduler-b0fff.web.app","appId":"1:195069311030:web:207d60d1d76711c0764097","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.1.0
+
+[info] 
+
+[debug] [2024-01-21T12:15:41.937Z] ----------------------------------------------------------------------
+[debug] [2024-01-21T12:15:41.939Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jjin0\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-01-21T12:15:41.939Z] CLI Version:   13.0.2
+[debug] [2024-01-21T12:15:41.939Z] Platform:      win32
+[debug] [2024-01-21T12:15:41.940Z] Node Version:  v18.17.1
+[debug] [2024-01-21T12:15:41.940Z] Time:          Sun Jan 21 2024 07:15:41 GMT-0500 (Eastern Standard Time)
+[debug] [2024-01-21T12:15:41.941Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-21T12:15:42.012Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-21T12:15:42.012Z] > authorizing via signed-in user (qianywang25@gmail.com)
+[debug] [2024-01-21T12:15:42.012Z] [iam] checking project myscheduler-b0fff for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-01-21T12:15:42.015Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions [none]
+[debug] [2024-01-21T12:15:42.015Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions x-goog-quota-user=projects/myscheduler-b0fff
+[debug] [2024-01-21T12:15:42.015Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:15:42.373Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions 200
+[debug] [2024-01-21T12:15:42.374Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myscheduler-b0fff:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-21T12:15:42.375Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:15:43.861Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff 200
+[debug] [2024-01-21T12:15:43.861Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/myscheduler-b0fff {"projectId":"myscheduler-b0fff","projectNumber":"195069311030","displayName":"MyScheduler","name":"projects/myscheduler-b0fff","resources":{"hostingSite":"myscheduler-b0fff","realtimeDatabaseInstance":"myscheduler-b0fff-default-rtdb"},"state":"ACTIVE","etag":"1_521acdd0-8aba-4067-9797-1aed1b2c5954"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-01-21T12:15:55.135Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff [none]
+[debug] [2024-01-21T12:15:55.715Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff 200
+[debug] [2024-01-21T12:15:55.716Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/myscheduler-b0fff/sites/myscheduler-b0fff {"name":"projects/myscheduler-b0fff/sites/myscheduler-b0fff","defaultUrl":"https://myscheduler-b0fff.web.app","appId":"1:195069311030:web:207d60d1d76711c0764097","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.1.0
+
+[info] 
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/8) ...
+
+[info]    Generating static pages (2/8) 
+
+[info] ReferenceError: window is not defined
+    at l (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\.next\server\app\report\page.js:1:3908)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47419)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nI (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46806)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47570)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61663)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nB (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67657)
+    at nF (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66824)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64990)
+
+[info]    Generating static pages (4/8) 
+
+[info] ReferenceError: window is not defined
+    at aN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\.next\server\app\page.js:1:215093)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47419)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nI (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46806)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47570)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61663)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nB (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67657)
+    at nF (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66824)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64990)
+
+Error occurred prerendering page "/report". Read more: https://nextjs.org/docs/messages/prerender-error
+
+ReferenceError: window is not defined
+    at l (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\.next\server\app\report\page.js:1:3908)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47419)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nI (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46806)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47570)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61663)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nB (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67657)
+    at nF (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66824)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64990)
+
+[info]    Generating static pages (6/8) 
+
+[info] 
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+
+ReferenceError: window is not defined
+    at aN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\.next\server\app\page.js:1:215093)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47419)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nI (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46806)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47570)
+    at nM (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61663)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64674)
+    at nB (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67657)
+    at nF (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66824)
+    at nN (C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64990)
+
+[info]  ✓ Generating static pages (8/8) 
+
+[info] 
+
+[info] > Export encountered errors on following paths:
+	/page: /
+	/report/page: /report
+
+[debug] [2024-01-21T12:16:11.764Z] Error: ENOENT: no such file or directory, open 'C:\Users\jjin0\Documents\GIT FOLDER\Conu2024\Conu2024\conu-sap-2024\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
