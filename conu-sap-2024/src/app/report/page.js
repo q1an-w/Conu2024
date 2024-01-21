@@ -66,6 +66,16 @@ function App() {
   });
   const [submitted, setSubmitted] = useState(false);
 
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedDayReport, setSelectedDayReport] = useState(null);
+  const handleDayClick = (dayReport) => {
+    setSelectedDayReport(dayReport);
+    setShowPopup(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
+    setSelectedDayReport(null);
+  };
   useEffect(() => {
     // Parse the query parameters from the URL
     const params = new URLSearchParams(window.location.search);
@@ -106,8 +116,8 @@ function App() {
       console.error("Error truncating data:", error);
     }
   };
-  const getChartData = () => {
-    const { revenue, loss } = genReport.TOTALREPORT;
+  const getChartData = (report) => {
+    const { revenue, loss } = report;
 
     return {
       labels: ["Revenue", "Loss"],
@@ -138,29 +148,62 @@ function App() {
           <h2>Total Report</h2>
           <div id="total-report">
             <div id="tr-table">
-              <p>Revenue: {genReport.TOTALREPORT.revenue}</p>
-              <p>Loss: {genReport.TOTALREPORT.loss}</p>
+              {Object.entries(genReport.TOTALREPORT).map(
+                ([key, value]) =>
+                  value !== 0 && (
+                    <p key={key}>
+                      {key}: {value}
+                    </p>
+                  )
+              )}
             </div>
           </div>
           <div id="graph">
-            {" "}
-            <div id="graph">
-              <Doughnut data={getChartData()} />
-            </div>
+            <Doughnut data={getChartData(genReport.TOTALREPORT)} />
           </div>
           {/* ... other properties from TOTALREPORT */}
         </div>
       ) : (
         <div className="dayday">
-          <h2>Day Report Array</h2>
           {genReport.DAYREPORTARRAY.map((dayReport) => (
-            <div className="daydayblock" key={dayReport.date}>
+            <div
+              className="daydayblock"
+              key={dayReport.date}
+              onClick={() => handleDayClick(dayReport)}
+            >
               <h3>Date: {dayReport.date}</h3>
-              <p>Revenue: {dayReport.revenue}</p>
-              <p>Loss: {dayReport.loss}</p>
-              {/* ... other properties from DAYREPORT */}
+              <div>
+                <p>Revenue: {dayReport.revenue}</p>
+                <p>Loss: {dayReport.loss}</p>
+              </div>
             </div>
           ))}
+        </div>
+      )}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <button className="close-button" onClick={closePopup}>
+              Close
+            </button>
+            <h2>Report For: {selectedDayReport.date} </h2>
+            {selectedDayReport && (
+              <div>
+                <p>Date: {selectedDayReport.date}</p>
+                {Object.entries(selectedDayReport).map(
+                  ([key, value]) =>
+                    value !== 0 && (
+                      <p key={key}>
+                        {key}: {value}
+                      </p>
+                    )
+                )}
+                <div id="graph">
+                  <Doughnut data={getChartData(selectedDayReport)} />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
