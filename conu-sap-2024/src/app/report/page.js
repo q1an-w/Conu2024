@@ -120,7 +120,7 @@ function App() {
   const getChartData = (report) => {
     const { revenue, loss } = report;
 
-    return {
+    const chartData = {
       labels: ["Revenue", "Loss"],
       datasets: [
         {
@@ -129,6 +129,15 @@ function App() {
         },
       ],
     };
+
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      width: "20vw", // Set the width to 50vw
+      height: "20vh", // Set the height to 50vh
+    };
+
+    return { ...chartData, options: chartOptions };
   };
 
   const isDateValid = (date) => {
@@ -141,34 +150,47 @@ function App() {
   return (
     <div className="App">
       <h1 className="title1">ReTirely Report</h1>
-      <button onClick={() => setTotalTab(true)}>Total Report</button>
-      <button onClick={() => setTotalTab(false)}>Day by Day Report</button>
+      <div className="tab-container">
+        <div
+          className={`tab-item ${totalTab ? "active" : ""}`}
+          onClick={() => setTotalTab(true)}
+        >
+          Total Report
+        </div>
+        <div
+          className={`tab-item ${!totalTab ? "active" : ""}`}
+          onClick={() => setTotalTab(false)}
+        >
+          Day by Day Report
+        </div>
+      </div>
 
       {totalTab ? (
         <div className="information">
           <h2>Total Report</h2>
           <div id="total-report">
-            <div id="tr-table">
+            <div className="total-report-item">
               {Object.entries(genReport.TOTALREPORT).map(
                 ([key, value]) =>
                   value !== 0 && (
-                    <p key={key}>
-                      {key}: {value}
-                    </p>
+                    <div key={key} className="report-item">
+                      <span className="report-key">{key}:</span>
+                      <span className="report-value">{value}</span>
+                    </div>
                   )
               )}
             </div>
+            <div id="graph">
+              <Doughnut data={getChartData(genReport.TOTALREPORT)} />
+            </div>
+            {/* ... other properties from TOTALREPORT */}
           </div>
-          <div id="graph">
-            <Doughnut data={getChartData(genReport.TOTALREPORT)} />
-          </div>
-          {/* ... other properties from TOTALREPORT */}
         </div>
       ) : (
         <div className="dayday">
           {genReport.DAYREPORTARRAY.map((dayReport) => (
             <div
-              className="daydayblock"
+              className="daydayblock-expanded"
               key={dayReport.date}
               onClick={() => handleDayClick(dayReport)}
             >
@@ -176,6 +198,7 @@ function App() {
               <div>
                 <p>Revenue: {dayReport.revenue}</p>
                 <p>Loss: {dayReport.loss}</p>
+                {/* ... other properties from DAYREPORT */}
               </div>
             </div>
           ))}
@@ -189,14 +212,14 @@ function App() {
             </button>
             <h2>Report For: {selectedDayReport.date} </h2>
             {selectedDayReport && (
-              <div>
-                <p>Date: {selectedDayReport.date}</p>
+              <div className="popup-report">
                 {Object.entries(selectedDayReport).map(
                   ([key, value]) =>
                     value !== 0 && (
-                      <p key={key}>
-                        {key}: {value}
-                      </p>
+                      <div key={key} className="popup-report-item">
+                        <span className="popup-report-key">{key}:</span>
+                        <span className="popup-report-value">{value}</span>
+                      </div>
                     )
                 )}
                 <div id="graph">
