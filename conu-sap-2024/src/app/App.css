@@ -1,0 +1,71 @@
+.App {}
+
+.welcome {
+  font-family: Helvetica;
+  font-weight: 700;
+  padding-left: 6rem;
+  font-size: 11rem;
+  align-self: flex-start;
+  /* Align to the start of the container */
+}
+
+
+.calendar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: Helvetica;
+  font-weight: 700;
+  font-size: 2rem;
+  border-radius: 4px
+}
+
+.cal-input {
+  border-color: #585856;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2.5px;
+  font-size: 0.7rem;
+  margin: 5px;
+  margin-top: 15px;
+  outline: none;
+  padding: 10px 20px;
+  text-align: center;
+  transition: border-color 0.5s ease;
+}
+
+.cal-input:focus {
+  border-color: rgb(212, 174, 239);
+}
+
+
+.wallpaper {
+  position: fixed;
+  height: 200%;
+  width: 200%;
+  background: url('./parkinglot.png') no-repeat center center;
+  background-size: 200%;
+
+  opacity: 0.4;
+}
+
+/* Add your custom styles for react-datepicker here */
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  margin: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.helloWorld {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  opacity: 0;
+}
