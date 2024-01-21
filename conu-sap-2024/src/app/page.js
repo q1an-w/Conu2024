@@ -1,26 +1,37 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './App.css';
 
-export default function Home() {
+function App() {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const dateRange = {
+      startDate: startDate.toISOString().split('T')[0],
+      endDate: endDate.toISOString().split('T')[0],
+    };
+    console.log(dateRange); // Replace with API call to backend
+  };
+
   return (
-    <main className={styles.main}>
-        <p>
-          <code className={styles.code}>welcome.</code>
-        </p>
-        <div>
-
+    <div className="App">
+      <div className="welcome">welcome.</div>
+      <div className="wallpaper"></div>
+      <div className="calendar">
+        <p>Please select a date range</p>
+        <form onSubmit={handleSubmit}>
+          <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+          <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
+          <button type="submit">Submit</button>
+        </form>
       </div>
- 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-    </main>
+      
+    </div>
   );
 }
+
+export default App;
