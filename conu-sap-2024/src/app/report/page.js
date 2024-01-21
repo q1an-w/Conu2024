@@ -2,7 +2,6 @@
 import { truncateParsedData } from "../utility/truncateData.js";
 import { generateReport } from "../utility/reportGenerater";
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./layout.css";
 import "../App.css";
@@ -66,6 +65,7 @@ function App() {
     ],
   });
   const [submitted, setSubmitted] = useState(false);
+
 
   const [showPopup, setShowPopup] = useState(false);
   const [selectedDayReport, setSelectedDayReport] = useState(null);
