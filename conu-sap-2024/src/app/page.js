@@ -7,6 +7,7 @@ import { truncateParsedData } from "./utility/truncateData";
 import Link from "next/link";
 
 function App() {
+  "use client";
   const initialStartDate = new Date("2022-10-01T07:30:00-04:00");
   const initialEndDate = new Date("2022-11-30T07:30:00-04:00");
   const [startDate, setStartDate] = useState(initialStartDate);
@@ -62,8 +63,9 @@ function App() {
       };
     }
   }, []);
+  let parallaxStyle;
   if (typeof window !== "undefined") {
-    let parallaxStyle = submitted
+    parallaxStyle = submitted
       ? {
           transform: `translate(-75rem, -80rem) rotate(30deg)`, // Adjust values for desired effect
           transition: "transform 1s ease, opacity 1s ease",

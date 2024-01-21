@@ -4,14 +4,19 @@ import { generateReport } from "../utility/reportGenerater";
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./layout.css";
 import "../App.css";
+import { Doughnut } from "react-chartjs-2";
+import "chart.js/auto";
 
 function App() {
+  "use client";
   const initialStartDate = new Date("2022-10-01T07:30:00-04:00");
   const initialEndDate = new Date("2022-11-30T07:30:00-04:00");
   const [startDate, setStartDate] = useState(initialStartDate);
   const [endDate, setEndDate] = useState(initialEndDate);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [totalTab, setTotalTab] = useState(true);
 
   const [sortedData, setSortedData] = useState([]);
   const [genReport, setGenReport] = useState({
@@ -62,41 +67,16 @@ function App() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setSubmitted(false);
-      const handleMouseMove = (e) => {
-        const { clientX, clientY } = e;
-        setMousePosition({ x: clientX, y: clientY });
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-      };
-    }
-  }, []);
-  let parallaxStyle = submitted
-    ? {
-        transform: `translate(-70rem, -70rem) rotate(30deg)`, // Adjust values for desired effect
-        transition: "transform 1s ease, opacity 1s ease",
-      }
-    : {
-        transform: `rotate(20deg) translateX(${
-          (mousePosition.x /
-            (window?.innerWidth || document.documentElement.clientWidth)) *
-            3 -
-          25
-        }rem) translateY(${
-          (mousePosition.y /
-            (window?.innerHeight || document.documentElement.clientHeight)) *
-            3 -
-          20
-        }rem)`,
-        opacity: 0.4,
-      };
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedDayReport, setSelectedDayReport] = useState(null);
+  const handleDayClick = (dayReport) => {
+    setSelectedDayReport(dayReport);
+    setShowPopup(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
+    setSelectedDayReport(null);
+  };
   useEffect(() => {
     // Parse the query parameters from the URL
     const params = new URLSearchParams(window.location.search);
@@ -129,13 +109,35 @@ function App() {
   const getData = async (startDate, endDate) => {
     try {
       const truncatedData = await truncateParsedData(startDate, endDate);
-
+      console.log("get data called");
       console.log(truncatedData);
       const generatedReport = await generateReport(truncatedData);
       setGenReport(generatedReport);
     } catch (error) {
       console.error("Error truncating data:", error);
     }
+  };
+  const getChartData = (report) => {
+    const { revenue, loss } = report;
+
+    const chartData = {
+      labels: ["Revenue", "Loss"],
+      datasets: [
+        {
+          data: [revenue, loss],
+          backgroundColor: ["green", "red"],
+        },
+      ],
+    };
+
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      width: "20vw", // Set the width to 50vw
+      height: "20vh", // Set the height to 50vh
+    };
+
+    return { ...chartData, options: chartOptions };
   };
 
   const isDateValid = (date) => {
@@ -147,37 +149,87 @@ function App() {
   };
   return (
     <div className="App">
-      {console.log(genReport)}
-      <div className="App">
-        <h1 className="title1">ReTirely Report</h1>
-        <div className="wallpaper" style={parallaxStyle}></div>
+      <h1 className="title1">ReTirely Report</h1>
+      <div className="tab-container">
+        <div
+          className={`tab-item ${totalTab ? "active" : ""}`}
+          onClick={() => setTotalTab(true)}
+        >
+          Total Report
+        </div>
+        <div
+          className={`tab-item ${!totalTab ? "active" : ""}`}
+          onClick={() => setTotalTab(false)}
+        >
+          Day by Day Report
+        </div>
       </div>
 
-      {/* Render data from genReport */}
-      <div className="information">
-        <h2>Total Report</h2>
-        <div id="total-report">
-          <div id="tr-table">
-            <p>Revenue: {genReport.TOTALREPORT.revenue}</p>
-            <p>Loss: {genReport.TOTALREPORT.loss}</p>
+      {totalTab ? (
+        <div className="information">
+          <h2>Total Report</h2>
+          <div id="total-report">
+            <div className="total-report-item">
+              {Object.entries(genReport.TOTALREPORT).map(
+                ([key, value]) =>
+                  value !== 0 && (
+                    <div key={key} className="report-item">
+                      <span className="report-key">{key}:</span>
+                      <span className="report-value">{value}</span>
+                    </div>
+                  )
+              )}
+            </div>
+            <div id="graph">
+              <Doughnut data={getChartData(genReport.TOTALREPORT)} />
+            </div>
+            {/* ... other properties from TOTALREPORT */}
           </div>
         </div>
-
-        <div id="graph"> Graph</div>
-        {/* ... other properties from TOTALREPORT */}
-      </div>
-
-      <div>
-        <h2>Day Report Array</h2>
-        {genReport.DAYREPORTARRAY.map((dayReport) => (
-          <div key={dayReport.date}>
-            <h3>Date: {dayReport.date}</h3>
-            <p>Revenue: {dayReport.revenue}</p>
-            <p>Loss: {dayReport.loss}</p>
-            {/* ... other properties from DAYREPORT */}
+      ) : (
+        <div className="dayday">
+          {genReport.DAYREPORTARRAY.map((dayReport) => (
+            <div
+              className="daydayblock-expanded"
+              key={dayReport.date}
+              onClick={() => handleDayClick(dayReport)}
+            >
+              <h3>Date: {dayReport.date}</h3>
+              <div>
+                <p>Revenue: {dayReport.revenue}</p>
+                <p>Loss: {dayReport.loss}</p>
+                {/* ... other properties from DAYREPORT */}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <button className="close-button" onClick={closePopup}>
+              Close
+            </button>
+            <h2>Report For: {selectedDayReport.date} </h2>
+            {selectedDayReport && (
+              <div className="popup-report">
+                {Object.entries(selectedDayReport).map(
+                  ([key, value]) =>
+                    value !== 0 && (
+                      <div key={key} className="popup-report-item">
+                        <span className="popup-report-key">{key}:</span>
+                        <span className="popup-report-value">{value}</span>
+                      </div>
+                    )
+                )}
+                <div id="graph">
+                  <Doughnut data={getChartData(selectedDayReport)} />
+                </div>
+              </div>
+            )}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
