@@ -133,9 +133,19 @@ function App() {
 
     return date >= minDate && date <= maxDate;
   };
+  const goBackToHomePage = () => {
+    window.location.href = "./";
+    console.log("Going back to home page");
+  };
   return (
     <div className="App">
-      <h1 className="title1">ReTirely Report</h1>
+      <div className="top-banner-section">
+        {" "}
+        <button className="back-btn" onClick={goBackToHomePage}>
+          Back
+        </button>
+        <h1 className="title1">ReTirely Report</h1>
+      </div>
 
       <div className="tab-container">
         <div
