@@ -62,25 +62,27 @@ function App() {
       };
     }
   }, []);
-  let parallaxStyle = submitted
-    ? {
-        transform: `translate(-75rem, -80rem) rotate(30deg)`, // Adjust values for desired effect
-        transition: "transform 1s ease, opacity 1s ease",
-      }
-    : {
-        transform: `rotate(20deg) translateX(${
-          (mousePosition.x /
-            (window?.innerWidth || document.documentElement.clientWidth)) *
-            3 -
-          25
-        }rem) translateY(${
-          (mousePosition.y /
-            (window?.innerHeight || document.documentElement.clientHeight)) *
-            3 -
-          50
-        }rem)`,
-        opacity: 0.4,
-      };
+  if (typeof window !== "undefined") {
+    let parallaxStyle = submitted
+      ? {
+          transform: `translate(-75rem, -80rem) rotate(30deg)`, // Adjust values for desired effect
+          transition: "transform 1s ease, opacity 1s ease",
+        }
+      : {
+          transform: `rotate(20deg) translateX(${
+            (mousePosition.x /
+              (window?.innerWidth || document.documentElement.clientWidth)) *
+              3 -
+            25
+          }rem) translateY(${
+            (mousePosition.y /
+              (window?.innerHeight || document.documentElement.clientHeight)) *
+              3 -
+            50
+          }rem)`,
+          opacity: 0.4,
+        };
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -102,8 +104,11 @@ function App() {
       endDate: dateRange.endDate,
     });
     setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.location.href = `/report?${queryParams.toString()}`;
+      }
       // Replace '/another-page' with the URL you want to navigate to
-      window.location.href = `/report?${queryParams.toString()}`;
+
       // window.location.href = "/report";
     }, 1000);
   };

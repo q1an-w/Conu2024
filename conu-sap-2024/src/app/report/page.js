@@ -116,11 +116,13 @@ function App() {
       startDate: startDate.toISOString().split("T")[0],
       endDate: endDate.toISOString().split("T")[0],
     });
-    window.history.replaceState(
-      {},
-      "",
-      `${window.location.pathname}?${queryParams.toString()}`
-    );
+    if (typeof window !== "undefined") {
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?${queryParams.toString()}`
+      );
+    }
 
     getData(startDate, endDate);
   }, [startDate, endDate]);
