@@ -1,0 +1,45 @@
+.App {
+  position: relative;
+  height: 100vh;
+  display: flex;
+
+
+}
+
+.welcome {
+  align-items: left;
+  font-family: helvetica;
+  font-weight: 700;
+  padding-left: 6rem;
+  font-size: 11rem;
+}
+
+.calendar {
+  position: absolute; /* Absolute positioning within the .App container */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+
+  text-align: center;
+}
+.wallpaper {
+  position: relative;
+  height: 100vh;
+  display: fixed;
+  justify-content: center;
+  align-items: center;
+  background: url('./parkinglot.png') no-repeat center center;
+  background-size: 200%;
+  transform: rotate(20deg); /* Adjust the rotation degree as needed */
+  opacity: 0.4; /* Adjust the opacity as needed */
+}
+
+/* Add your custom styles for react-datepicker here */
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  margin: 0.5rem;
+}
+
+
+button {
+  cursor: pointer;
+}
