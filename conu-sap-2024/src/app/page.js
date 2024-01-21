@@ -148,12 +148,7 @@ function App() {
 
   return (
     <div className="App">
-      <p
-        className="welcome"
-        style={{ opacity: submitted ? 0 : 1, transition: "opacity 1s ease" }}
-      >
-        welcome
-      </p>
+      <p className="welcome">welcome</p>
       <div className="wallpaper" style={parallaxStyle}></div>
       {!submitted && (
         <form className="calendar" onSubmit={handleSubmit}>

@@ -2,7 +2,6 @@
 import { truncateParsedData } from "../utility/truncateData.js";
 import { generateReport } from "../utility/reportGenerater";
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./layout.css";
 import "../App.css";
@@ -66,47 +65,6 @@ function App() {
     ],
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     setSubmitted(false);
-  //     const handleMouseMove = (e) => {
-  //       const { clientX, clientY } = e;
-  //       setMousePosition({ x: clientX, y: clientY });
-  //     };
-
-  //     window.addEventListener("mousemove", handleMouseMove);
-
-  //     return () => {
-  //       window.removeEventListener("mousemove", handleMouseMove);
-  //     };
-  //   }
-  // }, []);
-  // let parallaxStyle;
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     parallaxStyle = submitted
-  //       ? {
-  //           transform: `translate(-70rem, -70rem) rotate(30deg)`, // Adjust values for desired effect
-  //           transition: "transform 1s ease, opacity 1s ease",
-  //         }
-  //       : {
-  //           transform: `rotate(20deg) translateX(${
-  //             (mousePosition.x /
-  //               (window?.innerWidth || document.documentElement.clientWidth)) *
-  //               3 -
-  //             25
-  //           }rem) translateY(${
-  //             (mousePosition.y /
-  //               (window?.innerHeight ||
-  //                 document.documentElement.clientHeight)) *
-  //               3 -
-  //             20
-  //           }rem)`,
-  //           opacity: 0.4,
-  //         };
-  //   }
-  // }, [submitted]);
 
   useEffect(() => {
     // Parse the query parameters from the URL
