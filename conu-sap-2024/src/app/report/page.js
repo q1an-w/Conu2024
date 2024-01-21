@@ -152,10 +152,16 @@ function App() {
       </div>
 
       {/* Render data from genReport */}
-      <div>
+      <div className="information">
         <h2>Total Report</h2>
-        <p>Revenue: {genReport.TOTALREPORT.revenue}</p>
-        <p>Loss: {genReport.TOTALREPORT.loss}</p>
+        <div id="total-report">
+          <div id="tr-table">
+            <p>Revenue: {genReport.TOTALREPORT.revenue}</p>
+            <p>Loss: {genReport.TOTALREPORT.loss}</p>
+          </div>
+        </div>
+
+        <div id="graph"> Graph</div>
         {/* ... other properties from TOTALREPORT */}
       </div>
 

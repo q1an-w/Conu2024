@@ -86,6 +86,27 @@ button {
   font-size: 400%;
 }
 
+.information {
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+#total-report {
+  width: 50%;
+  float: left;
+}
+
+#graph {
+  overflow: hidden;
+}
+
+#tr-table {
+  border: 3px solid rgb(0, 0, 0);
+  background-color: #ffffff;
+  width: fit-content;
+  padding: 2%;
+}
+
 .helloWorld {
   position: fixed;
   top: 50%;
