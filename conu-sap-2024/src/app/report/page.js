@@ -2,7 +2,6 @@
 import { truncateParsedData } from "../utility/truncateData.js";
 import { generateReport } from "../utility/reportGenerater";
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./layout.css";
 import "../App.css";
@@ -36,6 +35,7 @@ function App() {
     },
     DAYREPORTARRAY: [
       {
+        date: 0,
         revenue: 0,
         loss: 0,
         revenueNumSmallCar: 0,
@@ -50,6 +50,7 @@ function App() {
         lossNumTruck2: 0,
       },
       {
+        date: 0,
         revenue: 0,
         loss: 0,
         revenueNumSmallCar: 0,
@@ -78,32 +79,18 @@ function App() {
     setSelectedDayReport(null);
   };
   useEffect(() => {
-    // Parse the query parameters from the URL
     const params = new URLSearchParams(window.location.search);
 
-    // Get the values for 'startDate' and 'endDate' from the query parameters
     const startDateParam = params.get("startDate");
     const endDateParam = params.get("endDate");
+    console.log(new Date(startDateParam + "T07:30:00-04:00"));
 
-    // Update the state with the parsed values
-    setStartDate(new Date(startDateParam + "T00:30:00-04:00"));
-    setEndDate(new Date(endDateParam + "T00:30:00-04:00"));
+    setStartDate(new Date(startDateParam + "T07:30:00-04:00"));
+    setEndDate(new Date(endDateParam + "T07:30:00-04:00"));
     console.log(startDateParam);
   }, []);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams({
-      startDate: startDate.toISOString().split("T")[0],
-      endDate: endDate.toISOString().split("T")[0],
-    });
-    if (typeof window !== "undefined") {
-      window.history.replaceState(
-        {},
-        "",
-        `${window.location.pathname}?${queryParams.toString()}`
-      );
-    }
-
     getData(startDate, endDate);
   }, [startDate, endDate]);
   const getData = async (startDate, endDate) => {
@@ -164,21 +151,37 @@ function App() {
           Day by Day Report
         </div>
       </div>
-
       {totalTab ? (
         <div className="information">
           <h2>Total Report</h2>
           <div id="total-report">
             <div className="total-report-item">
-              {Object.entries(genReport.TOTALREPORT).map(
-                ([key, value]) =>
+              {Object.entries(genReport.TOTALREPORT).map(([key, value]) => {
+                const labelMapping = {
+                  date: "Date",
+                  revenue: "Revenue",
+                  loss: "Loss",
+                  revenueNumSmallCar: "Processed Compact Cars",
+                  revenueNumMediumCar: "Processed Medium Cars",
+                  revenueNumBigCar: "Processed Full-Size Cars",
+                  revenueNumTruck1: "Processed Type 1 Trucks",
+                  revenueNumTruck2: "Processed Type 2 Trucks",
+                  lossNumSmallCar: "Turned-Away Compact Cars",
+                  lossNumMediumCar: "Turned-Away Medium Cars",
+                  lossNumBigCar: "Turned-Away Full-Size Cars",
+                  lossNumTruck1: "Turned-Away Type 1 Trucks",
+                  lossNumTruck2: "Turned-Away Type 2 Trucks",
+                };
+
+                return (
                   value !== 0 && (
                     <div key={key} className="report-item">
-                      <span className="report-key">{key}:</span>
+                      <span className="report-key">{labelMapping[key]}:</span>
                       <span className="report-value">{value}</span>
                     </div>
                   )
-              )}
+                );
+              })}
             </div>
             <div id="graph">
               <Doughnut data={getChartData(genReport.TOTALREPORT)} />
@@ -204,6 +207,7 @@ function App() {
           ))}
         </div>
       )}
+      // ... (previous code)
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup">
@@ -212,16 +216,33 @@ function App() {
             </button>
             <h2>Report For: {selectedDayReport.date} </h2>
             {selectedDayReport && (
-              <div className="popup-report">
-                {Object.entries(selectedDayReport).map(
-                  ([key, value]) =>
+              <div className="report-container">
+                {Object.entries(selectedDayReport).map(([key, value]) => {
+                  const labelMapping = {
+                    date: "Date",
+                    revenue: "Revenue",
+                    loss: "Loss",
+                    revenueNumSmallCar: "Processed Compact Cars",
+                    revenueNumMediumCar: "Processed Medium Cars",
+                    revenueNumBigCar: "Processed Full-Size Cars",
+                    revenueNumTruck1: "Processed Type 1 Trucks",
+                    revenueNumTruck2: "Processed Type 2 Trucks",
+                    lossNumSmallCar: "Turned-Away Compact Cars",
+                    lossNumMediumCar: "Turned-Away Medium Cars",
+                    lossNumBigCar: "Turned-Away Full-Size Cars",
+                    lossNumTruck1: "Turned-Away Type 1 Trucks",
+                    lossNumTruck2: "Turned-Away Type 2 Trucks",
+                  };
+
+                  return (
                     value !== 0 && (
-                      <div key={key} className="popup-report-item">
-                        <span className="popup-report-key">{key}:</span>
-                        <span className="popup-report-value">{value}</span>
+                      <div key={key} className="report-item">
+                        <span className="report-key">{labelMapping[key]}:</span>
+                        <span className="report-value">{value}</span>
                       </div>
                     )
-                )}
+                  );
+                })}
                 <div id="graph">
                   <Doughnut data={getChartData(selectedDayReport)} />
                 </div>

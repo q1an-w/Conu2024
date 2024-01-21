@@ -11,8 +11,8 @@ export const truncateParsedData = async (startDate, endDate) => {
     // Increment endDate by one day
     const endDateWithOneDay = endDate;
     endDateWithOneDay.setDate(endDateWithOneDay.getDate() + 1);
-    const startDateWithOneDay = startDate;
-    startDateWithOneDay.setDate(startDateWithOneDay.getDate() - 1);
+    // const startDateWithOneDay = startDate;
+    // startDateWithOneDay.setDate(startDateWithOneDay.getDate());
 
     // Iterate through the parsed data
     parsedData.forEach((entry) => {

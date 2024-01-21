@@ -148,37 +148,37 @@ function App() {
 
   return (
     <div className="App">
-      <p
-        className="welcome"
-        style={{ opacity: submitted ? 0 : 1, transition: "opacity 1s ease" }}
-      >
-        welcome
-      </p>
+      <p className="welcome">welcome</p>
       <div className="wallpaper" style={parallaxStyle}></div>
       {!submitted && (
         <form className="calendar" onSubmit={handleSubmit}>
           <p>Please select a date range:</p>
-          <DatePicker
-            className="cal-input"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            dateFormat="MM/dd/yyyy"
-            // minDate={new Date("2022-10-01")}
-            // maxDate={new Date("2022-11-30")}
-            filterDate={isDateValid}
-          />
-          <DatePicker
-            className="cal-input"
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            dateFormat="MM/dd/yyyy"
-            // minDate={new Date("2022-10-01")}
-            // maxDate={new Date("2022-11-30")}
-            filterDate={isDateValid}
-          />
-
+          <div className="date-picker-container">
+            <div className="date-picker">
+              <label className="date-label">Start Date:</label>
+              <DatePicker
+                className="cal-input"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                dateFormat="MM/dd/yyyy"
+                filterDate={isDateValid}
+                style={{ fontSize: "1.5rem", outline: "none" }}
+              />
+            </div>
+            <div className="date-picker">
+              <label className="date-label">End Date:</label>
+              <DatePicker
+                className="cal-input"
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                dateFormat="MM/dd/yyyy"
+                filterDate={isDateValid}
+                style={{ fontSize: "1.5rem", outline: "none" }}
+              />
+            </div>
+          </div>
           <button className="submit-btn" type="submit">
-            Submit
+            Generate Report!
           </button>
         </form>
       )}
