@@ -1,4 +1,5 @@
-.App {}
+.App {
+}
 
 .welcome {
   font-family: Helvetica;
@@ -29,10 +30,10 @@
   border-radius: 10px;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 600;
   margin: 5px;
-  padding: 7px 10px;
+  padding: 15px 25px;
   transition: box-shadow 0.2s;
 }
 
@@ -66,10 +67,21 @@
   width: 200%;
   background: url('./parkinglot.png') no-repeat center center;
   background-size: 200%;
-
+  transform: translate(-32rem, -65rem) rotate(20deg);
   opacity: 0.4;
 }
 
+.car {
+  position: fixed;
+  height: 100%;
+  width: 50%;
+  background: url('./greencar.png') no-repeat center center;
+  background-size: 50%;
+  opacity: 1;
+  z-index: -1;
+  transform: translate(-10rem, 30rem);
+  transition: transform 1s ease-out;
+}
 .react-datepicker-wrapper,
 .react-datepicker__input-container {
   margin: 0.5rem;
@@ -99,12 +111,14 @@ button {
 #graph {
   overflow: hidden;
   margin: auto;
+}
 
 #tr-table {
   border: 3px solid rgb(0, 0, 0);
   background-color: #ffffff;
   width: fit-content;
   padding: 2%;
+
 }
 
 .helloWorld {
@@ -148,19 +162,23 @@ button {
 
 @media only screen and (max-width: 600px) {
   .App {
-    height: 100vh; /* 100% of the viewport height */
+    height: 85vh;
+    width: 85vw;  
+    align-items: center;
   }
+
   .welcome {
-    font-size: 3rem !important; /* Adjust the font size as needed for smaller screens */
+    font-size: 5rem !important; /* Adjust the font size as needed for smaller screens */
+    text-align:center;
     top: 10%; /* Adjust the top value as needed */
-    padding-left: 1rem;
+    padding-left: 0;
   }
 
   .calendar {
     font-size: 1.2rem;
     padding-left: 10vw;
-    padding-right: 5vw;
-    padding-bottom: 35vh;
+    padding-right: 10vw;
+    padding-bottom: 40vh;
     max-width: 80vw; /* Limit the width of the calendar contents */
     margin-left: auto;
     margin-right: auto;
@@ -207,4 +225,4 @@ button {
 }
 
 
-}
+
