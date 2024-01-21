@@ -8,6 +8,7 @@ function App() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -29,35 +30,54 @@ function App() {
       endDate: endDate.toISOString().split("T")[0],
     };
     console.log(dateRange); // Replace with API call to backend
+    setSubmitted(true);
+    setTimeout(() => {
+      // Replace '/another-page' with the URL you want to navigate to
+      window.location.href = "/report";
+    }, 1000);
   };
 
-  const parallaxStyle = {
-    transform: `rotate(20deg) translateX(${
-      (mousePosition.x / window.innerWidth) * 3 - 15
-    }rem) translateY(${(mousePosition.y / window.innerHeight) * 3 - 20}rem)`,
-    opacity: 0.4,
-  };
+  const parallaxStyle = submitted
+    ? {
+        transform: `translate(-75rem, -80rem) rotate(30deg)`, // Adjust values for desired effect
+        transition: "transform 1s ease, opacity 1s ease",
+      }
+    : {
+        transform: `rotate(20deg) translateX(${
+          (mousePosition.x / window.innerWidth) * 3 - 25
+        }rem) translateY(${
+          (mousePosition.y / window.innerHeight) * 3 - 50
+        }rem)`,
+        opacity: 0.4,
+      };
 
   return (
     <div className="App">
-      <p className="welcome">welcome.</p>
+      <p
+        className="welcome"
+        style={{ opacity: submitted ? 0 : 1, transition: "opacity 1s ease" }}
+      >
+        welcome.
+      </p>
       <div className="wallpaper" style={parallaxStyle}></div>
-      <form className="calendar" onSubmit={handleSubmit}>
-        <p>Please select a date range:</p>
-        <DatePicker
-          className="cal-input"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-        />
-        <DatePicker
-          className="cal-input"
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-        />
-        <button className="submit-btn" type="submit">
-          Submit
-        </button>
-      </form>
+      {!submitted && (
+        <form className="calendar" onSubmit={handleSubmit}>
+          <p>Please select a date range:</p>
+          <DatePicker
+            className="cal-input"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
+          <DatePicker
+            className="cal-input"
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+          />
+          <button className="submit-btn" type="submit">
+            Submit
+          </button>
+        </form>
+      )}
     </div>
   );
 }
