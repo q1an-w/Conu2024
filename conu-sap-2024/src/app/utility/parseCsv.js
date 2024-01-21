@@ -1,7 +1,8 @@
 import Papa from "papaparse";
 
 export const parseAndSortCsvFile = async () => {
-  const csvFilePath = "../database/datafileshort.csv"; // Your CSV data goes here
+  const csvFilePath = "../database/datafile.csv"; //long one
+  // const csvFilePath = "../database/datafileshort.csv"; //short one
   const response = await fetch(csvFilePath);
   const csvContent = await response.text();
 

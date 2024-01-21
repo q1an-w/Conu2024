@@ -79,6 +79,13 @@ button {
   cursor: pointer;
 }
 
+.title1 {
+  font-family: Helvetica;
+  font-weight: 700;
+  padding-left: 6rem;
+  font-size: 400%;
+}
+
 .helloWorld {
   position: fixed;
   top: 50%;
