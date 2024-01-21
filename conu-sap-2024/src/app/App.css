@@ -1,0 +1,226 @@
+.App {}
+
+.welcome {
+  font-family: Helvetica;
+  font-weight: 700;
+  padding-left: 6rem;
+  font-size: 11em;
+  align-self: flex-start;
+  position: relative;
+}
+
+
+.calendar {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: Helvetica;
+  font-weight: 700;
+  font-size: 2rem;
+  border-radius: 4px
+}
+
+
+.submit-btn {
+  background-color: #585856;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px;
+  padding: 15px 25px;
+  transition: box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.cal-input {
+  border-color: #585856;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2.5px;
+  font-size: 0.7rem;
+  margin: 5px;
+  margin-top: 15px;
+  outline: none;
+  padding: 10px 20px;
+  text-align: center;
+  transition: border-color 0.5s ease;
+}
+
+.cal-input:focus {
+  border-color: rgb(212, 174, 239);
+}
+
+
+.wallpaper {
+  position: fixed;
+  height: 200%;
+  width: 200%;
+  background: url('./parkinglot.png') no-repeat center center;
+  background-size: 200%;
+  transform: translate(-32rem, -65rem) rotate(20deg);
+  opacity: 0.4;
+}
+
+.car {
+  position: fixed;
+  height: 100%;
+  width: 50%;
+  background: url('./greencar.png') no-repeat center center;
+  background-size: 50%;
+  opacity: 1;
+  z-index: -1;
+  transform: translate(-10rem, 30rem);
+  transition: transform 1s ease-out;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  margin: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.title1 {
+  font-family: Helvetica;
+  font-weight: 800;
+  font-size: 400%;
+  letter-spacing: 0.5vh;
+}
+
+.information {
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+#total-report {
+  width: 50%;
+  float: left;
+}
+
+#graph {
+  overflow: hidden;
+  margin: auto;
+}
+
+#tr-table {
+  border: 3px solid rgb(0, 0, 0);
+  background-color: #ffffff;
+  width: fit-content;
+  padding: 2%;
+
+}
+
+.helloWorld {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  opacity: 0;
+}
+
+.date-picker-container {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 30%;
+  margin-left: 30%;
+}
+
+.date-picker {
+  text-align: center;
+}
+
+.date-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.cal-input {
+  font-size: 1.5rem;
+}
+
+.wallpaper {
+  position: fixed;
+  height: 200%;
+  width: 200%;
+  background: url('./parkinglot.png') no-repeat center center;
+  background-size: 200%;
+  opacity: 0.4;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    height: 85vh;
+    width: 85vw;
+    align-items: center;
+  }
+
+  .welcome {
+    font-size: 5rem !important;
+    text-align: center;
+    top: 10%;
+    padding-left: 0;
+  }
+
+  .calendar {
+    font-size: 1.2rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-bottom: 40vh;
+    max-width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 4px 8px;
+  }
+
+  .cal-input {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    max-width: 20vw;
+  }
+
+  .wallpaper {
+    height: 100%;
+    width: 200%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url('./parkinglot.png') no-repeat center center;
+    background-size: cover;
+    background-position: 50% 50%;
+    opacity: 0.4;
+  }
+
+  .information {
+    width: 100%;
+  }
+
+  #total-report {
+    width: 100%;
+    float: none;
+  }
+
+  #tr-table {
+    width: 100%;
+  }
+
+  #graph {
+    width: 100%;
+  }
+}
