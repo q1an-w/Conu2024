@@ -1,8 +1,8 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import './App.css';
+"use client";
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./App.css";
 
 function App() {
   const [startDate, setStartDate] = useState(new Date());
@@ -15,24 +15,26 @@ function App() {
       setMousePosition({ x: clientX, y: clientY });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const dateRange = {
-      startDate: startDate.toISOString().split('T')[0],
-      endDate: endDate.toISOString().split('T')[0],
+      startDate: startDate.toISOString().split("T")[0],
+      endDate: endDate.toISOString().split("T")[0],
     };
     console.log(dateRange); // Replace with API call to backend
   };
 
   const parallaxStyle = {
-    transform: `rotate(20deg) translateX(${(mousePosition.x / window.innerWidth) * 3 - 15}rem) translateY(${(mousePosition.y / window.innerHeight) * 3 - 20}rem)`,
+    transform: `rotate(20deg) translateX(${
+      (mousePosition.x / window.innerWidth) * 3 - 15
+    }rem) translateY(${(mousePosition.y / window.innerHeight) * 3 - 20}rem)`,
     opacity: 0.4,
   };
 
@@ -42,8 +44,16 @@ function App() {
       <div className="wallpaper" style={parallaxStyle}></div>
       <form className="calendar" onSubmit={handleSubmit}>
         <p>Please select a date range:</p>
-        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-        <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
+        <DatePicker
+          className="cal-input"
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+        />
+        <DatePicker
+          className="cal-input"
+          selected={endDate}
+          onChange={(date) => setEndDate(date)}
+        />
         <button type="submit">Submit</button>
       </form>
     </div>
