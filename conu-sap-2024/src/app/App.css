@@ -1,5 +1,4 @@
-.App {
-}
+.App {}
 
 .welcome {
   font-family: Helvetica;
@@ -82,6 +81,7 @@
   transform: translate(-10rem, 30rem);
   transition: transform 1s ease-out;
 }
+
 .react-datepicker-wrapper,
 .react-datepicker__input-container {
   margin: 0.5rem;
@@ -133,8 +133,8 @@ button {
 .date-picker-container {
   display: flex;
   justify-content: space-around;
-  margin-right:30%;
-  margin-left:30%;
+  margin-right: 30%;
+  margin-left: 30%;
 }
 
 .date-picker {
@@ -144,11 +144,11 @@ button {
 .date-label {
   display: block;
   margin-bottom: 5px;
-  font-size: 20px; /* Adjust the font size as needed */
+  font-size: 20px;
 }
 
 .cal-input {
-  font-size: 1.5rem; /* Adjust the font size as needed */
+  font-size: 1.5rem;
 }
 
 .wallpaper {
@@ -163,13 +163,13 @@ button {
 @media only screen and (max-width: 600px) {
   .App {
     height: 85vh;
-    width: 85vw;  
+    width: 85vw;
     align-items: center;
   }
 
   .welcome {
-    font-size: 5rem !important; 
-    text-align:center;
+    font-size: 5rem !important;
+    text-align: center;
     top: 10%;
     padding-left: 0;
   }
@@ -179,7 +179,7 @@ button {
     padding-left: 10vw;
     padding-right: 10vw;
     padding-bottom: 40vh;
-    max-width: 80vw; 
+    max-width: 80vw;
     margin-left: auto;
     margin-right: auto;
   }
@@ -192,8 +192,9 @@ button {
   .cal-input {
     font-size: 0.9rem;
     padding: 6px 12px;
-    max-width:20vw;
+    max-width: 20vw;
   }
+
   .wallpaper {
     height: 100%;
     width: 200%;
@@ -223,6 +224,3 @@ button {
     width: 100%;
   }
 }
-
-
-

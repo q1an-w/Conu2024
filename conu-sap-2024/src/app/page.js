@@ -110,7 +110,7 @@ function App() {
 
   return (
     <div className="App">
-      <p className="welcome">welcome</p>
+      {!submitted && <p className="welcome">welcome</p>}
       <div className="wallpaper" style={parallaxStyle}></div>
       <div className="car" style={carparallaxStyle}></div>
       {!submitted && (
