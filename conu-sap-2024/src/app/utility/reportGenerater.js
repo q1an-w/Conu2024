@@ -21,6 +21,7 @@ export const generateReport = (rangeData) => {
   };
   const DAYREPORTARRAY = [];
   const DAYREPORT = {
+    date: "",
     revenue: 0,
     loss: 0,
     revenueNumSmallCar: 0,
@@ -207,6 +208,7 @@ export const generateReport = (rangeData) => {
 
     // Check if it's a new day
     if (apptDate.getDate() !== currentTime.getDate()) {
+      currentDayReport.date = currentTime.toISOString().split("T")[0];
       DAYREPORTARRAY.push({ ...currentDayReport }); // Add the current day report to the array
       currentDayReport = { ...DAYREPORT }; // Reset day report
       BAYARRAY.forEach((bay) => {
@@ -227,9 +229,9 @@ export const generateReport = (rangeData) => {
         updateDayReport(vehicle, true);
         updateTotalReport(vehicle, true);
       } else {
-        console.log("walkin");
-        console.log(vehicle);
-        console.log("walkin");
+        // console.log("walkin");
+        // console.log(vehicle);
+        // console.log("walkin");
         updateDayReport(vehicle, false);
         updateTotalReport(vehicle, false);
       }
@@ -239,15 +241,15 @@ export const generateReport = (rangeData) => {
         updateDayReport(vehicle, true);
         updateTotalReport(vehicle, true);
       } else {
-        console.log("not walkin");
-        console.log(vehicle);
-        console.log("not walkin");
+        // console.log("not walkin");
+        // console.log(vehicle);
+        // console.log("not walkin");
         updateDayReport(vehicle, false);
         updateTotalReport(vehicle, false);
       }
     }
-    console.log(BAYARRAY);
   });
+  currentDayReport.date = currentTime.toISOString().split("T")[0];
   DAYREPORTARRAY.push({ ...currentDayReport });
   console.log(TOTALREPORT);
 
