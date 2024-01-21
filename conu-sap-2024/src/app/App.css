@@ -31,7 +31,6 @@
   width: 200%;
   background: url('./parkinglot.png') no-repeat center center;
   background-size: 200%;
-  transform: rotate(20deg) translateX(-15rem) translateY(-20rem);
 
   opacity: 0.4;
 }
@@ -44,4 +43,13 @@
 
 button {
   cursor: pointer;
+}
+
+.helloWorld {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  opacity: 0;
 }
