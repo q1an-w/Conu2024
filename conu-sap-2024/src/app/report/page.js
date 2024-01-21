@@ -4,14 +4,19 @@ import { generateReport } from "../utility/reportGenerater";
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./layout.css";
 import "../App.css";
+import { Doughnut } from "react-chartjs-2";
+import "chart.js/auto";
 
 function App() {
+  "use client";
   const initialStartDate = new Date("2022-10-01T07:30:00-04:00");
   const initialEndDate = new Date("2022-11-30T07:30:00-04:00");
   const [startDate, setStartDate] = useState(initialStartDate);
   const [endDate, setEndDate] = useState(initialEndDate);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [totalTab, setTotalTab] = useState(true);
 
   const [sortedData, setSortedData] = useState([]);
   const [genReport, setGenReport] = useState({
@@ -62,40 +67,46 @@ function App() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setSubmitted(false);
-      const handleMouseMove = (e) => {
-        const { clientX, clientY } = e;
-        setMousePosition({ x: clientX, y: clientY });
-      };
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     setSubmitted(false);
+  //     const handleMouseMove = (e) => {
+  //       const { clientX, clientY } = e;
+  //       setMousePosition({ x: clientX, y: clientY });
+  //     };
 
-      window.addEventListener("mousemove", handleMouseMove);
+  //     window.addEventListener("mousemove", handleMouseMove);
 
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-      };
-    }
-  }, []);
-  let parallaxStyle = submitted
-    ? {
-        transform: `translate(-70rem, -70rem) rotate(30deg)`, // Adjust values for desired effect
-        transition: "transform 1s ease, opacity 1s ease",
-      }
-    : {
-        transform: `rotate(20deg) translateX(${
-          (mousePosition.x /
-            (window?.innerWidth || document.documentElement.clientWidth)) *
-            3 -
-          25
-        }rem) translateY(${
-          (mousePosition.y /
-            (window?.innerHeight || document.documentElement.clientHeight)) *
-            3 -
-          20
-        }rem)`,
-        opacity: 0.4,
-      };
+  //     return () => {
+  //       window.removeEventListener("mousemove", handleMouseMove);
+  //     };
+  //   }
+  // }, []);
+  // let parallaxStyle;
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     parallaxStyle = submitted
+  //       ? {
+  //           transform: `translate(-70rem, -70rem) rotate(30deg)`, // Adjust values for desired effect
+  //           transition: "transform 1s ease, opacity 1s ease",
+  //         }
+  //       : {
+  //           transform: `rotate(20deg) translateX(${
+  //             (mousePosition.x /
+  //               (window?.innerWidth || document.documentElement.clientWidth)) *
+  //               3 -
+  //             25
+  //           }rem) translateY(${
+  //             (mousePosition.y /
+  //               (window?.innerHeight ||
+  //                 document.documentElement.clientHeight)) *
+  //               3 -
+  //             20
+  //           }rem)`,
+  //           opacity: 0.4,
+  //         };
+  //   }
+  // }, [submitted]);
 
   useEffect(() => {
     // Parse the query parameters from the URL
@@ -129,13 +140,26 @@ function App() {
   const getData = async (startDate, endDate) => {
     try {
       const truncatedData = await truncateParsedData(startDate, endDate);
-
+      console.log("get data called");
       console.log(truncatedData);
       const generatedReport = await generateReport(truncatedData);
       setGenReport(generatedReport);
     } catch (error) {
       console.error("Error truncating data:", error);
     }
+  };
+  const getChartData = () => {
+    const { revenue, loss } = genReport.TOTALREPORT;
+
+    return {
+      labels: ["Revenue", "Loss"],
+      datasets: [
+        {
+          data: [revenue, loss],
+          backgroundColor: ["green", "red"],
+        },
+      ],
+    };
   };
 
   const isDateValid = (date) => {
@@ -147,37 +171,40 @@ function App() {
   };
   return (
     <div className="App">
-      {console.log(genReport)}
-      <div className="App">
-        <h1 className="title1">ReTirely Report</h1>
-        <div className="wallpaper" style={parallaxStyle}></div>
-      </div>
+      <h1 className="title1">ReTirely Report</h1>
+      <button onClick={() => setTotalTab(true)}>Total Report</button>
+      <button onClick={() => setTotalTab(false)}>Day by Day Report</button>
 
-      {/* Render data from genReport */}
-      <div className="information">
-        <h2>Total Report</h2>
-        <div id="total-report">
-          <div id="tr-table">
-            <p>Revenue: {genReport.TOTALREPORT.revenue}</p>
-            <p>Loss: {genReport.TOTALREPORT.loss}</p>
+      {totalTab ? (
+        <div className="information">
+          <h2>Total Report</h2>
+          <div id="total-report">
+            <div id="tr-table">
+              <p>Revenue: {genReport.TOTALREPORT.revenue}</p>
+              <p>Loss: {genReport.TOTALREPORT.loss}</p>
+            </div>
           </div>
+          <div id="graph">
+            {" "}
+            <div id="graph">
+              <Doughnut data={getChartData()} />
+            </div>
+          </div>
+          {/* ... other properties from TOTALREPORT */}
         </div>
-
-        <div id="graph"> Graph</div>
-        {/* ... other properties from TOTALREPORT */}
-      </div>
-
-      <div>
-        <h2>Day Report Array</h2>
-        {genReport.DAYREPORTARRAY.map((dayReport) => (
-          <div key={dayReport.date}>
-            <h3>Date: {dayReport.date}</h3>
-            <p>Revenue: {dayReport.revenue}</p>
-            <p>Loss: {dayReport.loss}</p>
-            {/* ... other properties from DAYREPORT */}
-          </div>
-        ))}
-      </div>
+      ) : (
+        <div className="dayday">
+          <h2>Day Report Array</h2>
+          {genReport.DAYREPORTARRAY.map((dayReport) => (
+            <div className="daydayblock" key={dayReport.date}>
+              <h3>Date: {dayReport.date}</h3>
+              <p>Revenue: {dayReport.revenue}</p>
+              <p>Loss: {dayReport.loss}</p>
+              {/* ... other properties from DAYREPORT */}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
