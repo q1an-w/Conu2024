@@ -1,95 +1,53 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import React, { useState, useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './App.css';
 
-export default function Home() {
+function App() {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      setMousePosition({ x: clientX, y: clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const dateRange = {
+      startDate: startDate.toISOString().split('T')[0],
+      endDate: endDate.toISOString().split('T')[0],
+    };
+    console.log(dateRange); // Replace with API call to backend
+  };
+
+  const parallaxStyle = {
+    transform: `rotate(20deg) translateX(${(mousePosition.x / window.innerWidth) * 3 - 15}rem) translateY(${(mousePosition.y / window.innerHeight) * 3 - 20}rem)`,
+    opacity: 0.4,
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <div className="App">
+      <p className="welcome">welcome.</p>
+      <div className="wallpaper" style={parallaxStyle}></div>
+      <form className="calendar" onSubmit={handleSubmit}>
+        <p>Please select a date range:</p>
+        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+        <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
+
+export default App;
