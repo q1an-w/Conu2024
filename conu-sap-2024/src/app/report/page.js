@@ -62,21 +62,41 @@ function App() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     setSubmitted(false);
-  //     const handleMouseMove = (e) => {
-  //       const { clientX, clientY } = e;
-  //       setMousePosition({ x: clientX, y: clientY });
-  //     };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSubmitted(false);
+      const handleMouseMove = (e) => {
+        const { clientX, clientY } = e;
+        setMousePosition({ x: clientX, y: clientY });
+      };
 
-  //     window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove);
 
-  //     return () => {
-  //       window.removeEventListener("mousemove", handleMouseMove);
-  //     };
-  //   }
-  // }, []);
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+      };
+    }
+  }, []);
+  let parallaxStyle = submitted
+    ? {
+        transform: `translate(-70rem, -70rem) rotate(30deg)`, // Adjust values for desired effect
+        transition: "transform 1s ease, opacity 1s ease",
+      }
+    : {
+        transform: `rotate(20deg) translateX(${
+          (mousePosition.x /
+            (window?.innerWidth || document.documentElement.clientWidth)) *
+            3 -
+          25
+        }rem) translateY(${
+          (mousePosition.y /
+            (window?.innerHeight || document.documentElement.clientHeight)) *
+            3 -
+          20
+        }rem)`,
+        opacity: 0.4,
+      };
+
   useEffect(() => {
     // Parse the query parameters from the URL
     const params = new URLSearchParams(window.location.search);
@@ -126,29 +146,10 @@ function App() {
   return (
     <div className="App">
       {console.log(genReport)}
-      <p className="welcome">welcome.</p>
-      <div className="wallpaper"></div>
-      <form className="calendar">
-        <p>Please select a date range:</p>
-        <DatePicker
-          className="cal-input"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          dateFormat="MM/dd/yyyy"
-          // minDate={new Date("2022-10-01")}
-          // maxDate={new Date("2022-11-30")}
-          filterDate={isDateValid}
-        />
-        <DatePicker
-          className="cal-input"
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          dateFormat="MM/dd/yyyy"
-          // minDate={new Date("2022-10-01")}
-          // maxDate={new Date("2022-11-30")}
-          filterDate={isDateValid}
-        />
-      </form>
+      <div className="App">
+        <h1 className="title1">ReTirely Report</h1>
+        <div className="wallpaper" style={parallaxStyle}></div>
+      </div>
 
       {/* Render data from genReport */}
       <div>

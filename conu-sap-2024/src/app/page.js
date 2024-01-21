@@ -81,32 +81,7 @@ function App() {
         }rem)`,
         opacity: 0.4,
       };
-  // useEffect(() => {
-  //   console.log(submitted);
 
-  //   parallaxStyle = submitted
-  //     ? {
-  //         transform: `translate(-75rem, -80rem) rotate(30deg)`, // Adjust values for desired effect
-  //         transition: "transform 1s ease, opacity 1s ease",
-  //       }
-  //     : {
-  //         transform: `rotate(20deg) translateX(${
-  //           (mousePosition.x /
-  //             (window?.innerWidth || document.documentElement.clientWidth)) *
-  //             3 -
-  //           25
-  //         }rem) translateY(${
-  //           (mousePosition.y /
-  //             (window?.innerHeight || document.documentElement.clientHeight)) *
-  //             3 -
-  //           50
-  //         }rem)`,
-  //         opacity: 0.4,
-  //       };
-  //   console.log(parallaxStyle);
-  // }, [submitted]);
-
-  // on submit info
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("hi");
@@ -170,7 +145,7 @@ function App() {
         className="welcome"
         style={{ opacity: submitted ? 0 : 1, transition: "opacity 1s ease" }}
       >
-        welcome.
+        welcome
       </p>
       <div className="wallpaper" style={parallaxStyle}></div>
       {!submitted && (
@@ -194,11 +169,10 @@ function App() {
             // maxDate={new Date("2022-11-30")}
             filterDate={isDateValid}
           />
-          <Link href="/initial">
-            <button className="submit-btn" type="submit">
-              Submit
-            </button>
-          </Link>
+
+          <button className="submit-btn" type="submit">
+            Submit
+          </button>
         </form>
       )}
     </div>
