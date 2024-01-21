@@ -54,7 +54,9 @@ function App() {
           selected={endDate}
           onChange={(date) => setEndDate(date)}
         />
-        <button type="submit">Submit</button>
+        <button className="submit-btn" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
