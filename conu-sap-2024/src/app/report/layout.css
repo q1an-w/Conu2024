@@ -1,9 +1,7 @@
 .dayday {
   display: flex;
   flex-wrap: wrap;
-  /* Allow items to wrap to the next line */
   justify-content: space-around;
-  /* Center items horizontally */
 }
 
 .daydayblock {
@@ -14,7 +12,6 @@
   text-align: center;
 }
 
-/* App.css */
 .App {
   text-align: center;
 }
@@ -24,7 +21,6 @@
   margin-bottom: 20px;
 }
 
-/* Add styles for tab container and items */
 .tab-container {
   display: flex;
   justify-content: space-around;
@@ -33,15 +29,12 @@
 
 .tab-item {
   flex: 1;
-  /* Each tab takes half the width of the screen */
   padding: 15px;
-  /* Increased padding for better touch/click interaction */
   cursor: pointer;
   border: 1px solid #000000;
   border-radius: 8px 8px 0 0;
   background-color: #c2c2c2;
   font-size: 1.2rem;
-  /* Increased font size */
   font-weight: bold;
   font-family: helvetica;
   transition: box-shadow 0.2s;
@@ -58,7 +51,6 @@
 #total-report {
   display: inline-block;
   text-align: left;
-  /* Align the content inside #total-report to the left */
 }
 
 #total-report-title {
@@ -73,7 +65,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  /* Add margin for spacing */
 }
 
 .popup-overlay {
@@ -107,7 +98,6 @@
   margin-bottom: 10px;
 }
 
-/* Adjust styles for day by day blocks in expanded view */
 .daydayblock-expanded {
   border: 1px solid #ccc;
   padding: 20px;
@@ -124,15 +114,12 @@
 
 .tab-item2 {
   flex: 1;
-  /* Each tab takes half the width of the screen */
   padding: 15px;
-  /* Increased padding for better touch/click interaction */
   cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 8px 8px 0 0;
   background-color: #f0f0f0;
   font-size: 1.2rem;
-  /* Increased font size */
 }
 
 .tab-item2.active {
@@ -186,10 +173,8 @@
   .popup-report-value {
     margin-left: 10px;
   }
-  /* ... (previous styles) */
 
 .popup-overlay {
-    /* Ensure the overlay covers the entire viewport */
     position: fixed;
     top: 0;
     left: 0;
@@ -201,7 +186,6 @@
   }
   
   .popup {
-    /* Set styles for the popup container */
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -211,37 +195,23 @@
   }
   
   .report-container {
-    /* Set styles for the container of both day by day and total report */
     display: flex;
-    flex-wrap: wrap; /* Ensure items are stacked vertically */
-    align-items: center; /* Center items horizontally */
+    flex-wrap: wrap; 
+    align-items: center; 
   }
   
   .report-item {
-    /* Set styles for each item in the report (both day by day and total report) */
     margin-bottom: 10px;
-    text-align: center; /* Center text */
+    text-align: center; 
   }
   
   .report-key {
-    /* Set styles for the label/key in the report (both day by day and total report) */
     font-weight: bold;
     margin-right: 5px;
   }
   
-  .report-value {
-    /* Set styles for the value in the report (both day by day and total report) */
-  }
-  
-  /* ... (remaining styles) */
-  
-
-  
-
-  /* Original styles go here */
-
-/* Mobile styles */
-/* Mobile styles */
+ 
+ 
 @media only screen and (max-width: 600px) {
     .App {
       height: 100vh;

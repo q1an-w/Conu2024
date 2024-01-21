@@ -1,8 +1,7 @@
 import Papa from "papaparse";
 
 export const parseAndSortCsvFile = async () => {
-  const csvFilePath = "../database/datafile.csv"; //long one
-  // const csvFilePath = "../database/datafileshort.csv"; //short one
+  const csvFilePath = "../database/datafile.csv";
   const response = await fetch(csvFilePath);
   const csvContent = await response.text();
 
@@ -15,7 +14,7 @@ export const parseAndSortCsvFile = async () => {
       const csvData = event.target.result;
 
       Papa.parse(csvData, {
-        header: false, // Assuming the first row contains headers
+        header: false,
         dynamicTyping: true,
         complete: (result) => {
           const parsedData = result.data.map((row) => ({
@@ -24,7 +23,6 @@ export const parseAndSortCsvFile = async () => {
             category: row[2],
           }));
 
-          // Sort the array by endDate (requested appointment date/time)
           parsedData.sort((a, b) => {
             const apptDateDiff = a.apptDate - b.apptDate;
             return apptDateDiff !== 0 ? apptDateDiff : a.callDate - b.callDate;
@@ -43,7 +41,7 @@ export const parseAndSortCsvFile = async () => {
 
 const parseCustomDate = (dateString) => {
   if (!dateString) {
-    return null; // or handle this case as needed
+    return null;
   }
   const [date, time] = dateString.split(" ");
   const [year, month, day] = date.split("-");

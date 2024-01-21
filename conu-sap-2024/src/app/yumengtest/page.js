@@ -23,11 +23,6 @@ const YourPage = () => {
     }
   };
 
-  useEffect(() => {
-    // Uncomment the line below if you want to load data initially
-    // handleFileChange();
-  }, []);
-
   return (
     <div>
       <h1>Date-truncated CSV Data</h1>

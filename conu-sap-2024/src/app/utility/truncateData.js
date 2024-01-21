@@ -1,11 +1,9 @@
 import { parseAndSortCsvFile } from "./parseCsv.js";
 
 export const truncateParsedData = async (startDate, endDate) => {
-  // Initialize array for truncated data
   const truncatedData = [];
 
   try {
-    // Get parsed data
     const parsedData = await parseAndSortCsvFile();
 
     // Increment endDate by one day

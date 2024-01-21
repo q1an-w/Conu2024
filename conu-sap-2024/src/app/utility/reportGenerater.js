@@ -63,14 +63,8 @@ export const generateReport = (rangeData) => {
   ];
 
   let currentTime = rangeData[0].apptDate;
-  let currentDayReport = { ...DAYREPORT }; // Initialize currentDayReport
-
-  //foreach functions --------------------------------------------------
-  //--------------------------------------------------
-  //--------------------------------------------------
-  // ... (Previous code remains unchanged)
+  let currentDayReport = { ...DAYREPORT };
   const getMappedCVSCategoryName = (category) => {
-    // Define your mapping logic here
     switch (category.toLowerCase()) {
       case "compact":
         return "SmallCar";
@@ -142,11 +136,11 @@ export const generateReport = (rangeData) => {
     const freeBays = BAYARRAY.filter((bay) => bay.isFree).length;
 
     if (walkInBays === 0 && freeBays >= 1) {
-      return true; // No walk-in of the same type exists, and there is at least one free spot
+      return true;
     } else if (walkInBays > 0 && freeBays - walkInBays >= 1) {
-      return true; // Walk-ins of the same type exist, but there are enough free spots
+      return true;
     } else {
-      return false; // No available bay for the walk-in
+      return false;
     }
   };
 

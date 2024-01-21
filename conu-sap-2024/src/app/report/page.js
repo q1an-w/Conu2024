@@ -120,15 +120,14 @@ function App() {
     const chartOptions = {
       responsive: true,
       maintainAspectRatio: false,
-      width: "50vw", // Set the width to 50vw
-      height: "50vh", // Set the height to 50vh
+      width: "50vw",
+      height: "50vh",
     };
 
     return { ...chartData, options: chartOptions };
   };
 
   const isDateValid = (date) => {
-    // Function to check if a date is within the specified range
     const minDate = new Date("2022-10-01T00:00:00-04:00");
     const maxDate = new Date("2022-11-30T00:00:00-04:00");
 
