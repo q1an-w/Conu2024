@@ -32,7 +32,7 @@ function App() {
   };
 
   const parallaxStyle = {
-    transform: `rotate(30deg) translateX(${(mousePosition.x / window.innerWidth) * 3 - 15}rem) translateY(${(mousePosition.y / window.innerHeight) * 3 - 20}rem)`,
+    transform: `rotate(30deg) translateX(${(mousePosition.x / window.innerWidth) * 3 - 50}rem) translateY(${(mousePosition.y / window.innerHeight) * 3 - 30}rem)`,
     opacity: 0.4,
   };
 
@@ -40,12 +40,6 @@ function App() {
     <div className="App">
       <p className="welcome">welcome.</p>
       <div className="wallpaper" style={parallaxStyle}></div>
-      <form className="calendar" onSubmit={handleSubmit}>
-        <p>Please select a date range:</p>
-        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-        <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
-        <button type="submit">Submit</button>
-      </form>
     </div>
   );
 }

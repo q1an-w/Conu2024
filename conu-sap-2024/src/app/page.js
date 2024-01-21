@@ -31,6 +31,10 @@ function App() {
     };
     console.log(dateRange); // Replace with API call to backend
     setSubmitted(true);
+    setTimeout(() => {
+      // Replace '/another-page' with the URL you want to navigate to
+      window.location.href = '/report';
+    }, 1000);
   };
 
   const parallaxStyle = submitted
