@@ -1,0 +1,77 @@
+/* layout.css */
+.dayday {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-around; /* Center items horizontally */
+  }
+  
+  .daydayblock {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  /* App.css */
+  .App {
+    text-align: center;
+  }
+  
+  .title1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .information {
+    margin-top: 20px;
+  }
+  
+  #total-report {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  #graph {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+  }
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .close-button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  

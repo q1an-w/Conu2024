@@ -70,7 +70,6 @@
   opacity: 0.4;
 }
 
-/* Add your custom styles for react-datepicker here */
 .react-datepicker-wrapper,
 .react-datepicker__input-container {
   margin: 0.5rem;
@@ -78,6 +77,34 @@
 
 button {
   cursor: pointer;
+}
+
+.title1 {
+  font-family: Helvetica;
+  font-weight: 700;
+  padding-left: 6rem;
+  font-size: 400%;
+}
+
+.information {
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+#total-report {
+  width: 50%;
+  float: left;
+}
+
+#graph {
+  overflow: hidden;
+}
+
+#tr-table {
+  border: 3px solid rgb(0, 0, 0);
+  background-color: #ffffff;
+  width: fit-content;
+  padding: 2%;
 }
 
 .helloWorld {

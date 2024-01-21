@@ -8,12 +8,17 @@ export const truncateParsedData = async (startDate, endDate) => {
     // Get parsed data
     const parsedData = await parseAndSortCsvFile();
 
+    // Increment endDate by one day
+    const endDateWithOneDay = endDate;
+    endDateWithOneDay.setDate(endDateWithOneDay.getDate() + 1);
+    const startDateWithOneDay = startDate;
+    startDateWithOneDay.setDate(startDateWithOneDay.getDate() - 1);
+
     // Iterate through the parsed data
     parsedData.forEach((entry) => {
       const apptDate = entry.apptDate;
-
       // append entry to truncatedData
-      if (apptDate >= startDate && apptDate <= endDate) {
+      if (apptDate >= startDate && apptDate < endDateWithOneDay) {
         truncatedData.push(entry);
       }
       // else do nothing
@@ -22,6 +27,6 @@ export const truncateParsedData = async (startDate, endDate) => {
     console.error("Error fetching or parsing CSV file:", error);
   }
 
-  // Return truncatedDate
+  // Return truncatedData
   return truncatedData;
 };
