@@ -150,6 +150,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="title1">ReTirely Report</h1>
+      
       <div className="tab-container">
         <div
           className={`tab-item ${totalTab ? "active" : ""}`}
@@ -230,6 +231,7 @@ function App() {
           </div>
         </div>
       )}
+      
     </div>
   );
 }
