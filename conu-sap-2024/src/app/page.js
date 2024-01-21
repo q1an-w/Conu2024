@@ -56,7 +56,7 @@ function App() {
           <p>Please select a date range:</p>
           <DatePicker className="cal-input" selected={startDate} onChange={date => setStartDate(date)} />
           <DatePicker className="cal-input" selected={endDate} onChange={date => setEndDate(date)} />
-          <button type="submit">Submit</button>
+          <button className="submit-btn" type="submit">Submit</button>
         </form>
       )}
     </div>
